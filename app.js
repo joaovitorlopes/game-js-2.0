@@ -1,3 +1,4 @@
+let selectedNumbers = [];
 let secretNumber = getRandomNumber();
 let attemptsCounter = 1;
 
@@ -34,7 +35,13 @@ function checkGuess() {
 }
 
 function getRandomNumber () {
-    return parseInt(Math.random() * 10 + 1)
+    let randomNumber = parseInt(Math.random() * 10 + 1);
+    if (selectedNumbers.includes(randomNumber)) {
+        return getRandomNumber();
+    } else {
+        selectedNumbers.push(randomNumber);
+        return randomNumber;
+    }
 }
 
 function inputCleaner () {
