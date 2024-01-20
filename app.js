@@ -6,6 +6,7 @@ let attemptsCounter = 1;
 function changeElementInHTML(tag, text) {
     let element = document.querySelector(tag);
     element.innerHTML = text;
+    responsiveVoice.speak(text, 'Brazilian Portuguese Female', {rate:1.2});
 }
 
 function showInitialMessage() {
