@@ -6,8 +6,12 @@ function changeElementInHTML(tag, text) {
     element.innerHTML = text;
 }
 
-changeElementInHTML('h1', 'The secret number game');
-changeElementInHTML('p', 'Choice a number between 1 and 10');
+function showInitialMessage() {
+    changeElementInHTML('h1', 'The secret number game');
+    changeElementInHTML('p', 'Choice a number between 1 and 10');
+}
+
+showInitialMessage();
 
 function checkGuess() {
     let guessValue = document.querySelector('input').value;
@@ -36,4 +40,12 @@ function getRandomNumber () {
 function inputCleaner () {
     guessInput = document.querySelector('input');
     guessInput.value = '';
+}
+
+function restartGame () {
+    secretNumber = getRandomNumber();
+    inputCleaner();
+    attemptsCounter = 1;
+    showInitialMessage();
+    document.getElementById('reiniciar').setAttribute('disabled', true);
 }
