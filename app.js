@@ -1,4 +1,5 @@
 let secretNumber = getRandomNumber();
+let attemptsCounter = 1;
 
 function changeElementInHTML(tag, text) {
     let element = document.querySelector(tag);
@@ -13,13 +14,16 @@ function checkGuess() {
     
     if (guessInput == secretNumber) {
         changeElementInHTML('h1', `Right in the bull's-eye!`);
-        changeElementInHTML('p', `You discovered the secret number!`);
+        wordAttempts = attemptsCounter > 1 ? 'attempts' : 'attempt'
+        attemptsMessage = `You discovered the secret number with ${attemptsCounter} ${wordAttempts}!`;
+        changeElementInHTML('p', attemptsMessage);
     } else {
         if (guessInput > secretNumber) {
             changeElementInHTML('p', `The secret number is lower`);
         } else {
             changeElementInHTML('p', `The secret number is higher`);
         }
+        attemptsCounter++;
     }
 }
 
