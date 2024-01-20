@@ -1,5 +1,5 @@
 let selectedNumbers = [];
-let max = 3;
+let max = 10;
 let secretNumber = getRandomNumber();
 let attemptsCounter = 1;
 
