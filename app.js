@@ -10,23 +10,30 @@ changeElementInHTML('h1', 'The secret number game');
 changeElementInHTML('p', 'Choice a number between 1 and 10');
 
 function checkGuess() {
-    let guessInput = document.querySelector('input').value;
+    let guessValue = document.querySelector('input').value;
     
-    if (guessInput == secretNumber) {
+    if (guessValue == secretNumber) {
         changeElementInHTML('h1', `Right in the bull's-eye!`);
         wordAttempts = attemptsCounter > 1 ? 'attempts' : 'attempt'
         attemptsMessage = `You discovered the secret number with ${attemptsCounter} ${wordAttempts}!`;
         changeElementInHTML('p', attemptsMessage);
+        document.getElementById('reiniciar').removeAttribute('disabled');
     } else {
-        if (guessInput > secretNumber) {
+        if (guessValue > secretNumber) {
             changeElementInHTML('p', `The secret number is lower`);
         } else {
             changeElementInHTML('p', `The secret number is higher`);
         }
         attemptsCounter++;
+        inputCleaner();
     }
 }
 
-function getRandomNumber() {
+function getRandomNumber () {
     return parseInt(Math.random() * 10 + 1)
+}
+
+function inputCleaner () {
+    guessInput = document.querySelector('input');
+    guessInput.value = '';
 }
